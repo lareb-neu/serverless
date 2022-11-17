@@ -6,13 +6,12 @@ def handler(event, context):
     token=json.loads(event['Records'][0]['Sns']['Message'])['Subject']
     messagetype=json.loads(event['Records'][0]['Sns']['Message'])['MessageType']
     send_email(username, token, messagetype)
-    print("hello")
 def send_email(email,token, messagetype):
-    SENDER = "no-reply@demo.larebkhan.me"
+    SENDER = "employeease@demo.larebkhan.me"
 
     RECIPIENT = email
 
-    authlink = "http://demo.larebkhan.me/verify?email=" + email + "&token=" + token
+    authlink = "http://demo.larebkhan.me/v1/verify?email=" + email + "&token=" + token
 
     print(authlink)
 
@@ -25,16 +24,16 @@ def send_email(email,token, messagetype):
 
     AWS_REGION = "us-east-1"
 
-    SUBJECT = messagetype
+    SUBJECT = messagetype+" for candidate account"
 
-    BODY_TEXT = ("Email verification for new user\r\n"
+    BODY_TEXT = ("We need to verify your account to move further\r\n"
                  "Details:\r\n"
                  "\n"
-                 "Name: " + email + "\n"
+                 "Hello " + email + "\n"
                  "\n"
                  "Verifying email id: " + email + "\r\n"
                  "\r\n"
-                 "Use the link provided below to verify yourself:\r\n"
+                 "Click this link to confirm your email address and complete setup for your candidate account. This link will expire in 5 minutes\r\n"
                  "Verify: " + authlink
                  )
 
