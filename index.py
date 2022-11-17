@@ -4,9 +4,10 @@ import boto3
 def handler(event, context):
     username=json.loads(event['Records'][0]['Sns']['Message'])['Username']
     token=json.loads(event['Records'][0]['Sns']['Message'])['Subject']
-    send_email(username, token)
+    messagetype=json.loads(event['Records'][0]['Sns']['Message'])['MessageType']
+    send_email(username, token, messagetype)
     print("hello")
-def send_email(email,token):
+def send_email(email,token, messagetype):
     SENDER = "no-reply@demo.larebkhan.me"
 
     RECIPIENT = email
@@ -24,7 +25,7 @@ def send_email(email,token):
 
     AWS_REGION = "us-east-1"
 
-    SUBJECT = "Verification Email"
+    SUBJECT = messagetype
 
     BODY_TEXT = ("Email verification for new user\r\n"
                  "Details:\r\n"
@@ -39,8 +40,6 @@ def send_email(email,token):
 
     CHARSET = "UTF-8"
     
-    #client = boto3.client('ses', region_name='us-east-1',aws_access_key_id='AKIAZAXXVSVN3BCKCQMV',
-     #                             aws_secret_access_key='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')
     client = boto3.client('ses')
     try:
         response = client.send_email(
