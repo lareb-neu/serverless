@@ -5,7 +5,7 @@ def handler(event, context):
     username=json.loads(event['Records'][0]['Sns']['Message'])['Username']
     token=json.loads(event['Records'][0]['Sns']['Message'])['Subject']
     send_email(username, token)
-
+    print("hello")
 def send_email(email,token):
     SENDER = "no-reply@demo.larebkhan.me"
 

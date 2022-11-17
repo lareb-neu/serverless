@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build code-deploy artifact
         run: |
-          zip bundle.zip sendemail.py
+          zip bundle.zip index.py
           ls -al
       - name: AWS creds
         uses: aws-actions/configure-aws-credentials@v1
