@@ -39,9 +39,9 @@ def send_email(email,token):
 
     CHARSET = "UTF-8"
     
-    client = boto3.client('ses', region_name='us-east-1',aws_access_key_id='AKIAZAXXVSVN3BCKCQMV',
-                                  aws_secret_access_key='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')
-
+    #client = boto3.client('ses', region_name='us-east-1',aws_access_key_id='AKIAZAXXVSVN3BCKCQMV',
+     #                             aws_secret_access_key='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')
+    client = boto3.client('ses')
     try:
         response = client.send_email(
             Destination=DESTINATION,
