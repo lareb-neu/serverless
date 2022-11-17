@@ -8,7 +8,6 @@ on:
 jobs:
           
  Deploy-Lambda:
-    if: github.repository == 'lareb-neu/serverless '
     name: Function deploy
     runs-on: ubuntu-latest
 
