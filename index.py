@@ -11,7 +11,7 @@ def send_email(email,token, messagetype):
 
     RECIPIENT = email
 
-    authlink = "http://demo.larebkhan.me/v1/verify?email=" + email + "&token=" + token
+    authlink = "https://demo.larebkhan.me/v1/verify?email=" + email + "&token=" + token
 
     print(authlink)
 
