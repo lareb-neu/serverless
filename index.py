@@ -24,7 +24,7 @@ def send_email(email,token, messagetype):
 
     AWS_REGION = "us-east-1"
 
-    SUBJECT = messagetype+" for candidate account"
+    SUBJECT = messagetype+" hello"
 
     BODY_TEXT = ("We need to verify your account to move further\r\n"
                  "Details:\r\n"
